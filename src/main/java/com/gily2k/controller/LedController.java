@@ -18,12 +18,13 @@ public class LedController {
     public String light() {
         if (pin == null) {
             GpioController gpio = GpioFactory.getInstance();
+
             pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
         }
 
         pin.toggle();
 
-        return "OK";
+        return GpioFactory.getInstance().getState(pin).toString();
     }
 
 }
