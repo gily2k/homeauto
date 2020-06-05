@@ -11,7 +11,7 @@ public class MomentaryButton {
     final GpioController gpio = GpioFactory.getInstance();
     GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_01,
             "MyButton",
-            PinPullResistance.PULL_DOWN);
+            PinPullResistance.PULL_UP);
 
     GpioPinDigitalOutput myLed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "MyLED", PinState.LOW);
 
@@ -19,7 +19,7 @@ public class MomentaryButton {
     public void checkButton() {
         Date now = new Date();
         System.out.println(String.format("Button check [%s] button state -> %s", now, myButton.getState()));
-        if (myButton.getState() == PinState.HIGH) {
+        if (myButton.isHigh()) {
             myLed.setState(PinState.HIGH);
         } else {
             myLed.setState(PinState.LOW);
