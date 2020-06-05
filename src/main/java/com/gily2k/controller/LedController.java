@@ -14,17 +14,17 @@ public class LedController {
         return "Hello world!";
     }
 
-    @RequestMapping("/light")
-    public String light() {
-        if (pin == null) {
-            GpioController gpio = GpioFactory.getInstance();
-
-            pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
-        }
-
-        pin.toggle();
-
-        return GpioFactory.getInstance().getState(pin).toString();
-    }
+//    @RequestMapping("/light")
+//    public String light() {
+//        if (pin == null) {
+//            GpioController gpio = GpioFactory.getInstance();
+//
+//            pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+//        }
+//
+//        pin.toggle();
+//
+//        return GpioFactory.getInstance().getState(pin).toString();
+//    }
 
 }
