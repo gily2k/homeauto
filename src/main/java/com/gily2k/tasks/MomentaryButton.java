@@ -18,8 +18,8 @@ public class MomentaryButton {
     @Scheduled(fixedRate=100)
     public void checkButton() {
         Date now = new Date();
-        System.out.println(String.format("Button check [%s]", now));
-        if (myButton.getState() == PinState.LOW) {
+        System.out.println(String.format("Button check [%s] button state -> %s", now, myButton.getState()));
+        if (myButton.getState() == PinState.HIGH) {
             myLed.setState(PinState.HIGH);
         } else {
             myLed.setState(PinState.LOW);
