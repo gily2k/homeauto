@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LedController {
-    private GpioController gpio = GpioFactory.getInstance();
-    final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_01, PinPullResistance.PULL_DOWN);
+
 
     @RequestMapping("/")
     public String greeting() {
@@ -18,13 +17,7 @@ public class LedController {
 
     @RequestMapping("/start")
     public String startListen() {
-        myButton.addListener(new GpioPinListenerDigital() {
-            @Override
-            public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
-            }
 
-        });
         return "Ok";
     }
 
