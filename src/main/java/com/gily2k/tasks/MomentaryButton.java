@@ -15,7 +15,7 @@ public class MomentaryButton {
 
     GpioPinDigitalOutput myLed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "MyLED", PinState.LOW);
 
-    @Scheduled()
+    @Scheduled(fixedRate=100)
     public void checkButton() {
         Date now = new Date();
         System.out.println(String.format("Button check [%s]", now));
