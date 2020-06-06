@@ -15,7 +15,7 @@ public class ButtonInput {
     @Scheduled(fixedRate = 500)
     public void tickMomButton() {
         Date now = new Date();
-        System.out.println(String.format("tick [%s] -> %", now.toString(), momButton.getState()));
+        System.out.println(String.format("tick [%s] -> %", now.toString(), momButton.getState().getName()));
     }
 
 
