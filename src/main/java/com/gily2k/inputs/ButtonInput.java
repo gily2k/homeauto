@@ -12,10 +12,10 @@ public class ButtonInput {
     final GpioController gpio = GpioFactory.getInstance();
     private GpioPinDigitalInput momButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, "mom-button", PinPullResistance.PULL_DOWN);
 
-    @Scheduled(fixedRate = 200)
+    @Scheduled(fixedRate = 500)
     public void tickMomButton() {
         Date now = new Date();
-        System.out.println(String.format("tick [%s] -> $", now.toString(), momButton.getState()));
+        System.out.println(String.format("tick [%s] -> %", now.toString(), momButton.getState()));
     }
 
 
