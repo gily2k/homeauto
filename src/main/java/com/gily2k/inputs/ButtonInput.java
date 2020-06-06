@@ -16,7 +16,9 @@ public class ButtonInput {
     public ButtonInput() {
         gpio = GpioFactory.getInstance();
         momButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, "mom-button", PinPullResistance.PULL_DOWN);
+        momButton.setDebounce(1000);
         led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+
     }
 
     @Scheduled(fixedRate = 100)
