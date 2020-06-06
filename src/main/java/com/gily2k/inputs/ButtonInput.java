@@ -11,6 +11,7 @@ public class ButtonInput {
     GpioController gpio = null;
     GpioPinDigitalInput momButton = null;
     GpioPinDigitalOutput led = null;
+    PinState lastSate = PinState.LOW;
 
     public ButtonInput() {
         gpio = GpioFactory.getInstance();
@@ -23,10 +24,8 @@ public class ButtonInput {
         Date now = new Date();
         PinState state = momButton.getState();
         System.out.println(String.format("tick [%s] -> %s", now.toString(), state));
-        if (momButton.isHigh()) {
-            led.setState(PinState.HIGH);
-        }else {
-            led.setState(PinState.LOW);
+        if (lastSate != momButton.getState()){
+            led.toggle();
         }
     }
 
